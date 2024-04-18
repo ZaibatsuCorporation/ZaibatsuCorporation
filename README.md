@@ -7,7 +7,7 @@
   //  Код программы принадлежит ZC.
 */
 //==================================================
-String firmwareversion = "v190420240139";
+String firmwareversion = "v190420240232";
 //==================================================
 // Редактор символов (порядок для TM1637 a,g,f,e,d,c,b,h):
 // https://naladchikkip.ru/spravochnik/onlajn-generator-koda-semisegmentnyh-indikatorov
