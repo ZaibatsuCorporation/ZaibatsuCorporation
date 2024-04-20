@@ -7,7 +7,7 @@
   //  Код программы принадлежит ZC.
 */
 //==================================================
-String firmwareversion = "v190420240232";
+String firmwareversion = "v200420242243";
 //==================================================
 // Редактор символов (порядок для TM1637 a,g,f,e,d,c,b,h):
 // https://naladchikkip.ru/spravochnik/onlajn-generator-koda-semisegmentnyh-indikatorov
@@ -27,6 +27,7 @@ GButton BTN2(7, HIGH_PULL, NORM_OPEN);
 GButton BTN3(8, HIGH_PULL, NORM_OPEN);
 GButton BTN4(9, HIGH_PULL, NORM_OPEN);
 /* Пользовательские настройки */
+byte numberOfMagnets = 1; // Количество магнитов/считываний за один оборот
 unsigned int dispSpeedWelcome = 60; // скорость анимации при запуске (мс)
 unsigned int dispSpeedWheel = 60; // скорость анимации колёс по краям (мс)
 byte brightnessDay = 7; // яркость дисплея днём (от 0 до 7)
@@ -200,7 +201,7 @@ void loop() {
 
 void calcSpeed () {
   if (millis() - lastturn > minWaitToNextCalcSpeed) {
-    preSpeed = w_length / ((float)(millis() - lastturn) / 1000) * 3.6;
+    preSpeed = w_length / ((float)(millis() - lastturn) / 1000) * 3.6 / numberOfMagnets;
     lastturn = millis();
     if (preSpeed > 100) {
       preSpeed = 99;
